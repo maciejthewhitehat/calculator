@@ -47,9 +47,9 @@ function performOperation() {
         }
     }
 
-    total.innerHTML = lastResult;  // Display the result in total
-    currentOperation.innerHTML = lastResult;  // Update currentOperation with the result
-    currentNumber = "";  // Reset currentNumber for the next operation
+    total.innerHTML = lastResult;
+    currentOperation.innerHTML = lastResult;
+    currentNumber = "";
 }
 
 function operationHandler(operator) {
@@ -59,7 +59,7 @@ function operationHandler(operator) {
 
     lastOperation = operator;
     isOperatorUsed = true;
-    currentOperation.innerHTML += getOperatorSymbol(operator);  // Append the operator to currentOperation
+    currentOperation.innerHTML += getOperatorSymbol(operator);
 }
 
 function getOperatorSymbol(operator) {
@@ -77,7 +77,6 @@ function getOperatorSymbol(operator) {
     }
 }
 
-// Event listeners for number buttons
 function handleNumber(number) {
     if (currentOperation.innerHTML === "0" && number !== ".") {
         currentOperation.innerHTML = number;
@@ -99,29 +98,25 @@ button7.addEventListener("click", () => handleNumber("7"));
 button8.addEventListener("click", () => handleNumber("8"));
 button9.addEventListener("click", () => handleNumber("9"));
 
-// Dot button handling
 buttonDot.addEventListener("click", () => {
     if (!currentNumber.includes(".")) {
         handleNumber(".");
     }
 });
 
-// Event listeners for operators
 buttonDivide.addEventListener("click", () => operationHandler("divide"));
 buttonMultiply.addEventListener("click", () => operationHandler("multiply"));
 buttonSubstract.addEventListener("click", () => operationHandler("substract"));
 buttonSum.addEventListener("click", () => operationHandler("sum"));
 
-// Equal button listener
 buttonEqual.addEventListener("click", () => {
     if (lastOperation !== null) {
         performOperation();
-        lastOperation = null;  // Reset last operation after equals
+        lastOperation = null;
     }
     isOperatorUsed = false;
 });
 
-// Clear and delete
 buttonClearAll.addEventListener("click", () => {
     total.innerHTML = "";
     currentOperation.innerHTML = "0";
